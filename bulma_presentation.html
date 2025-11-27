@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Présentation Bulma CSS</title>
+    
+    <!-- Importation des polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Urbanist:wght@300;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- RESET & GLOBAL --- */
+        :root {
+            --primary: #00d1b2; /* Bulma Green */
+            --primary-dark: #00b89c;
+            --bg-dark: #1a1b1d;
+            --bg-card: #242629;
+            --text-main: #ffffff;
+            --text-muted: #b5b5b5;
+            --font-main: 'Urbanist', sans-serif;
+            --font-code: 'Fira Code', monospace;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #000;
+            font-family: var(--font-main);
+            color: var(--text-main);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* --- CONTENEUR SLIDES --- */
+        #presentation-container {
+            width: 1280px;
+            height: 720px;
+            position: relative;
+            background-color: var(--bg-dark);
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 209, 178, 0.15);
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        /* Décoration de fond subtile */
+        .bg-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--primary), transparent);
+        }
+
+        /* --- SLIDE STYLES --- */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 60px 80px;
+            display: none; /* Caché par défaut */
+            flex-direction: column;
+            justify-content: center;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- TYPOGRAPHIE --- */
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            color: var(--primary);
+            margin-bottom: 40px;
+            border-bottom: 2px solid rgba(0, 209, 178, 0.3);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+
+        p, li {
+            font-size: 1.5rem;
+            line-height: 1.6;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        code {
+            font-family: var(--font-code);
+            background: #111;
+            color: var(--primary);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            border: 1px solid #333;
+        }
+
+        ul {
+            list-style: none;
+        }
+        ul li::before {
+            content: "▹";
+            color: var(--primary);
+            margin-right: 10px;
+        }
+
+        /* --- LAYOUTS SPÉCIFIQUES --- */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* Tuiles pour Modificateurs */
+        .tile-card {
+            background: var(--bg-card);
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        /* Diagrammes SVG */
+        .diagram-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+        svg text {
+            font-family: var(--font-code);
+            fill: white;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1.2rem;
+        }
+        th {
+            text-align: left;
+            color: var(--primary);
+            border-bottom: 2px solid #444;
+            padding: 10px;
+        }
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #333;
+            color: var(--text-muted);
+        }
+
+        /* Ratios visuels */
+        .ratio-box {
+            background: rgba(0, 209, 178, 0.2);
+            border: 2px solid var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-code);
+            color: var(--primary);
+            margin: 0 auto;
+        }
+
+        /* --- NAVIGATION --- */
+        .controls {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .btn-nav {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        .btn-nav:hover {
+            background: var(--primary);
+            color: #000;
+        }
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-family: var(--font-code);
+            color: #555;
+            font-size: 0.9rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="presentation-container">
+        <div class="bg-accent"></div>
+
+        <!-- SLIDE 1: TITRE -->
+        <div class="slide active">
+            <div style="text-align: center;">
+                <!-- Logo SVG Bulma reconstitué -->
+                <svg width="150" height="150" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom: 20px;">
+                    <path d="M43.75 5L16.25 32.5L33.75 50L16.25 67.5L43.75 95L83.75 67.5L61.25 50L83.75 32.5L43.75 5Z" fill="#00D1B2"/>
+                </svg>
+                <h1>Bulma CSS</h1>
+                <p style="font-size: 1.8rem; color: var(--primary);">Le framework moderne, gratuit et open-source basé sur Flexbox.</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 2: INTRODUCTION -->
+        <div class="slide">
+            <h2>Qu'est-ce que Bulma ?</h2>
+            <div class="grid-2">
+                <div>
+                    <ul>
+                        <li><strong>100% CSS :</strong> Aucun JavaScript requis pour le fonctionnement de base.</li>
+                        <li><strong>Flexbox :</strong> Construit entièrement sur Flexible Box Layout pour une mise en page moderne.</li>
+                        <li><strong>Mobile First :</strong> Optimisé pour les écrans tactiles et responsive par défaut.</li>
+                        <li><strong>Léger :</strong> Modulaire, importez seulement ce dont vous avez besoin.</li>
+                    </ul>
+                </div>
+                <div class="diagram-container">
+                    <div style="font-family: var(--font-code); font-size: 5rem; color: #333;">
+                        &lt;/&gt;
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 3: PHILOSOPHIE BEM -->
+        <div class="slide">
+            <h2>Philosophie BEM</h2>
+            <p style="text-align: center; margin-bottom: 40px;">Block - Element - Modifier</p>
+            <div class="diagram-container">
+                <svg width="800" height="300" viewBox="0 0 800 300">
+                    <!-- Block -->
+                    <rect x="50" y="50" width="200" height="200" rx="10" stroke="#00d1b2" stroke-width="4" fill="none"/>
+                    <text x="150" y="150" text-anchor="middle" fill="#00d1b2" font-size="20">BLOCK (.card)</text>
+                    
+                    <!-- Arrow -->
+                    <path d="M 270 150 L 330 150" stroke="#555" stroke-width="2" marker-end="url(#arrow)"/>
+                    
+                    <!-- Element -->
+                    <rect x="350" y="50" width="200" height="200" rx="10" stroke="#00d1b2" stroke-width="2" stroke-dasharray="5,5" fill="none"/>
+                    <rect x="370" y="100" width="160" height="100" rx="5" fill="#242629" stroke="#fff" stroke-width="2"/>
+                    <text x="450" y="155" text-anchor="middle" fill="white" font-size="16">ELEMENT</text>
+                    <text x="450" y="180" text-anchor="middle" fill="#777" font-size="12">(.card-content)</text>
+
+                    <!-- Arrow -->
+                    <path d="M 570 150 L 630 150" stroke="#555" stroke-width="2"/>
+
+                    <!-- Modifier -->
+                    <rect x="650" y="100" width="120" height="100" rx="5" fill="#00d1b2" stroke="none"/>
+                    <text x="710" y="155" text-anchor="middle" fill="#000" font-weight="bold" font-size="16">MODIFIER</text>
+                    <text x="710" y="180" text-anchor="middle" fill="#000" font-size="12">(.is-active)</text>
+                </svg>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: MODIFICATEURS -->
+        <div class="slide">
+            <h2>Les Modificateurs</h2>
+            <p>Syntaxe lisible pour contrôler l'apparence et l'état.</p>
+            <div class="grid-2">
+                <div class="tile-card">
+                    <h3>Couleurs (is-)</h3>
+                    <code>is-primary</code>
+                    <code>is-link</code>
+                    <code>is-danger</code>
+                    <code>is-success</code>
+                </div>
+                <div class="tile-card">
+                    <h3>Tailles (is-)</h3>
+                    <code>is-small</code>
+                    <code>is-medium</code>
+                    <code>is-large</code>
+                </div>
+                <div class="tile-card">
+                    <h3>États (is-)</h3>
+                    <code>is-active</code>
+                    <code>is-loading</code>
+                    <code>is-disabled</code>
+                </div>
+                <div class="tile-card">
+                    <h3>Helpers (has-)</h3>
+                    <code>has-text-centered</code>
+                    <code>has-background-black</code>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: GRILLE -->
+        <div class="slide">
+            <h2>Le Système de Grille</h2>
+            <p>Basé sur Flexbox, structure simple : <code>columns</code> > <code>column</code></p>
+            
+            <div style="background: #111; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                <code>&lt;div class="columns"&gt;<br>
+                &nbsp;&nbsp;&lt;div class="column is-half"&gt;A&lt;/div&gt;<br>
+                &nbsp;&nbsp;&lt;div class="column"&gt;B&lt;/div&gt;<br>
+                &nbsp;&nbsp;&lt;div class="column"&gt;C&lt;/div&gt;<br>
+                &lt;/div&gt;</code>
+            </div>
+
+            <!-- Visual Grid Representation -->
+            <div style="display: flex; gap: 10px; width: 100%; height: 60px;">
+                <div style="width: 50%; background: var(--primary); display: flex; align-items: center; justify-content: center; color: #000; border-radius: 4px; font-weight: bold;">is-half</div>
+                <div style="flex: 1; background: #2f2f2f; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 1px solid #555;">auto</div>
+                <div style="flex: 1; background: #2f2f2f; display: flex; align-items: center; justify-content: center; border-radius: 4px; border: 1px solid #555;">auto</div>
+            </div>
+            <p style="margin-top:20px; font-size: 1.2rem;">Autres conteneurs clés : <code>container</code>, <code>section</code>, <code>level</code></p>
+        </div>
+
+        <!-- SLIDE 6: TYPOGRAPHIE -->
+        <div class="slide">
+            <h2>Typographie</h2>
+            <div class="grid-2">
+                <div>
+                    <h3>Classes principales</h3>
+                    <ul>
+                        <li><code>.title</code> : Titre principal (h1-h6)</li>
+                        <li><code>.subtitle</code> : Accompagnement visuel</li>
+                        <li><code>.content</code> : Pour les blocs de texte WYSIWYG</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Utilitaires de texte</h3>
+                    <ul>
+                        <li><code>.has-text-centered</code></li>
+                        <li><code>.has-text-weight-bold</code></li>
+                        <li><code>.is-uppercase</code></li>
+                        <li><code>.is-size-1</code> à <code>.is-size-7</code></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin-top: 40px; border-left: 4px solid var(--primary); padding-left: 20px;">
+                <h1 style="font-size: 2.5rem; margin:0;">Title 1</h1>
+                <p style="font-size: 1.5rem; color: #888; margin:0;">Subtitle 3</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: NAVBAR -->
+        <div class="slide">
+            <h2>La Navbar</h2>
+            <p>Responsive par défaut, structure flexible.</p>
+            <div style="font-family: var(--font-code); font-size: 0.9rem; margin-bottom: 20px;">
+                &lt;nav class="navbar"&gt;<br>
+                &nbsp;&nbsp;.navbar-brand (Logo + Burger)<br>
+                &nbsp;&nbsp;.navbar-menu (Caché sur mobile)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;.navbar-start (Liens gauche)<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;.navbar-end (Boutons droite)<br>
+                &lt;/nav&gt;
+            </div>
+
+            <!-- Wireframe SVG -->
+            <svg width="1000" height="150" viewBox="0 0 1000 150">
+                <rect x="0" y="20" width="1000" height="80" fill="#242629" rx="4"/>
+                <!-- Brand -->
+                <rect x="20" y="40" width="100" height="40" fill="#00d1b2" rx="4"/>
+                <text x="70" y="65" text-anchor="middle" fill="#000" font-size="14" font-weight="bold">BRAND</text>
+                
+                <!-- Start -->
+                <rect x="150" y="45" width="300" height="30" fill="none" stroke="#555" stroke-dasharray="4"/>
+                <text x="300" y="65" text-anchor="middle" fill="#888" font-size="12">navbar-start (Links)</text>
+                
+                <!-- End -->
+                <rect x="800" y="40" width="180" height="40" fill="none" stroke="#555" stroke-dasharray="4"/>
+                <text x="890" y="65" text-anchor="middle" fill="#888" font-size="12">navbar-end (Buttons)</text>
+            </svg>
+        </div>
+
+        <!-- SLIDE 8: BODY ET HERO -->
+        <div class="slide">
+            <h2>Structure : Section & Hero</h2>
+            <div class="grid-2">
+                <div>
+                    <h3>.section</h3>
+                    <p>Le conteneur de base pour diviser le contenu verticalement. Ajoute un padding confortable.</p>
+                </div>
+                <div>
+                    <h3>.hero</h3>
+                    <p>Composant bannière essentiel.</p>
+                    <ul>
+                        <li><code>is-fullheight</code></li>
+                        <li><code>is-halfheight</code></li>
+                        <li><code>is-primary</code> (fond coloré)</li>
+                    </ul>
+                </div>
+            </div>
+            <div style="margin-top: 30px; height: 150px; background: var(--primary); display: flex; align-items: center; justify-content: center; color: black; border-radius: 8px;">
+                <div style="text-align: center;">
+                    <p style="color: #000; font-weight: bold; margin:0;">.hero.is-primary.is-medium</p>
+                    <p style="color: #004d40; font-size: 1rem; margin:0;">.hero-body</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 9: IMAGES ET RATIOS -->
+        <div class="slide">
+            <h2>Images & Ratios</h2>
+            <p>Le conteneur <code>figure.image</code> gère les dimensions.</p>
+            
+            <div class="grid-3" style="align-items: flex-end;">
+                <div style="text-align: center;">
+                    <div class="ratio-box" style="width: 150px; height: 150px; border-radius: 50%;">128x128</div>
+                    <code style="margin-top: 10px; display: block;">is-128x128</code>
+                </div>
+                <div style="text-align: center;">
+                    <div class="ratio-box" style="width: 200px; height: 200px;">1 by 1</div>
+                    <code style="margin-top: 10px; display: block;">is-1by1</code>
+                </div>
+                <div style="text-align: center;">
+                    <div class="ratio-box" style="width: 250px; height: 140px;">16 by 9</div>
+                    <code style="margin-top: 10px; display: block;">is-16by9</code>
+                </div>
+            </div>
+            <p style="margin-top: 20px; font-size: 1rem; text-align: center;">Utile pour les avatars (arrondis) et les embeds vidéo.</p>
+        </div>
+
+        <!-- SLIDE 10: FOOTER -->
+        <div class="slide">
+            <h2>Le Footer</h2>
+            <p>Un composant simple pour le bas de page.</p>
+            <div style="background: #111; padding: 20px; border-radius: 8px; margin-bottom: 30px;">
+                <code>&lt;footer class="footer"&gt;<br>
+                &nbsp;&nbsp;&lt;div class="content has-text-centered"&gt;<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Built with Bulma&lt;/p&gt;<br>
+                &nbsp;&nbsp;&lt;/div&gt;<br>
+                &lt;/footer&gt;</code>
+            </div>
+            
+            <div style="background: #f5f5f5; padding: 30px; border-radius: 8px; color: #333; text-align: center;">
+                <strong>Exemple de rendu :</strong>
+                <p style="color: #333; margin-top: 10px; font-size: 1rem;">© 2023 Mon Site Web. Propulsé par Bulma.</p>
+            </div>
+        </div>
+
+        <!-- SLIDE 11: RÉCAPITULATIF -->
+        <div class="slide">
+            <h2>Récapitulatif des Classes Clés</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Catégorie</th>
+                        <th>Classes Bulma</th>
+                        <th>Usage</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Boutons</strong></td>
+                        <td><code>button</code>, <code>is-primary</code>, <code>is-loading</code></td>
+                        <td>Actions interactives</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Formulaires</strong></td>
+                        <td><code>input</code>, <code>textarea</code>, <code>select</code></td>
+                        <td>Champs stylisés uniformément</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Images</strong></td>
+                        <td><code>image</code>, <code>is-rounded</code>, <code>is-4by3</code></td>
+                        <td>Gestion des médias</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Layout</strong></td>
+                        <td><code>columns</code>, <code>section</code>, <code>container</code></td>
+                        <td>Structure de la page</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SLIDE 12: CONCLUSION -->
+        <div class="slide">
+            <div style="text-align: center;">
+                <h1 style="color: var(--primary);">Merci !</h1>
+                <p>Bulma simplifie le design web grâce à une syntaxe claire et une approche moderne.</p>
+                
+                <div style="margin-top: 60px; border-top: 1px solid #333; padding-top: 40px;">
+                    <p style="font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; color: #888;">Présenté par</p>
+                    <h3 style="font-size: 2.5rem; margin: 10px 0;">Muckaya Florida</h3>
+                    <span style="color: var(--primary); font-size: 1.5rem;">&</span>
+                    <h3 style="font-size: 2.5rem; margin: 10px 0;">Henintsoa Jordi</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 13: SOURCES -->
+        <div class="slide">
+            <h2>Sources & Ressources</h2>
+            <table>
+                <tbody>
+                    <tr>
+                        <td><strong>Documentation Officielle</strong></td>
+                        <td><a href="https://bulma.io/documentation/" style="color: var(--primary);">bulma.io/documentation</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Repository GitHub</strong></td>
+                        <td>github.com/jgthms/bulma</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Icônes</strong></td>
+                        <td>Font Awesome (recommandé par Bulma)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Logo</strong></td>
+                        <td>SVG Official Bulma Brand Assets</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Polices</strong></td>
+                        <td>Google Fonts (Urbanist & Fira Code)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- NAVIGATION CONTROLS -->
+        <div class="slide-number">Slide <span id="current-slide">1</span> / 13</div>
+        <div class="controls">
+            <button class="btn-nav" onclick="changeSlide(-1)">&#8592;</button>
+            <button class="btn-nav" onclick="changeSlide(1)">&#8594;</button>
+        </div>
+
+    </div>
+
+    <script>
+        let currentSlideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const slideNumberDisplay = document.getElementById('current-slide');
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+            slideNumberDisplay.textContent = index + 1;
+        }
+
+        function changeSlide(direction) {
+            currentSlideIndex += direction;
+            
+            if (currentSlideIndex < 0) {
+                currentSlideIndex = 0;
+            } else if (currentSlideIndex >= slides.length) {
+                currentSlideIndex = slides.length - 1;
+            }
+            
+            showSlide(currentSlideIndex);
+        }
+
+        // Navigation Clavier
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === ' ') {
+                changeSlide(1);
+            } else if (e.key === 'ArrowLeft') {
+                changeSlide(-1);
+            }
+        });
+    </script>
+</body>
+</html>
