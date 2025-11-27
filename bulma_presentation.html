@@ -468,7 +468,53 @@
             <p style="margin-top: 20px; font-size: 1rem; text-align: center;">Utile pour les avatars (arrondis) et les embeds vidéo.</p>
         </div>
 
-        <!-- SLIDE 10: FOOTER -->
+           <!-- SLIDE 10: RESPONSIVES & COULEURS -->
+    <div class="slide">
+        <h2>Responsives &amp; Couleurs</h2>
+        <p class="small">Breakpoints utilitaires : <code>is-mobile</code> (&lt;1024px), <code>is-desktop</code> (≥1024px), <code>is-widescreen</code> (≥1216px), <code>is-fullhd</code> (≥1408px).</p>
+
+        <div class="grid-2" style="margin-top:12px;">
+            <div class="tile-card">
+                <h3>Palette</h3>
+                <p class="small">is-primary (teinte Bulma), is-link, is-info, is-success, is-warning, is-danger.</p>
+                <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+                    <div style="width:56px;height:32px;background:var(--primary);border-radius:6px;border:1px solid rgba(255,255,255,0.03)"></div>
+                    <div style="width:56px;height:32px;background:#3273dc;border-radius:6px;border:1px solid rgba(255,255,255,0.03)"></div>
+                    <div style="width:56px;height:32px;background:#23d160;border-radius:6px;border:1px solid rgba(255,255,255,0.03)"></div>
+                    <div style="width:56px;height:32px;background:#ffdd57;border-radius:6px;border:1px solid rgba(255,255,255,0.03)"></div>
+                    <div style="width:56px;height:32px;background:#ff3860;border-radius:6px;border:1px solid rgba(255,255,255,0.03)"></div>
+                </div>
+            </div>
+            <div class="tile-card">
+                <h3>Responsive</h3>
+                <p class="small">Bulma est mobile-first, les classes adaptent le layout et la taille automatiquement selon la résolution.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 11: MARGINS & PADDINGS -->
+    <div class="slide">
+        <h2>Margins &amp; Paddings</h2>
+        <p class="small">Utilisez les helpers : <code>mt-0</code> à <code>mt-6</code> (margin-top), <code>mb-0</code> à <code>mb-6</code>, et pour padding <code>pt-0</code> à <code>pt-6</code>, etc.</p>
+
+        <div class="grid-2" style="margin-top:12px">
+            <div class="tile-card">
+                <h3>Exemples</h3>
+                <ul>
+                    <li>mt-3 → applique margin-top</li>
+                    <li>px-4 → padding horizontal</li>
+                    <li>my-2 → margin vertical</li>
+                </ul>
+            </div>
+            <div class="tile-card">
+                <h3>Conseil</h3>
+                <p class="small">Combinez helpers pour contrôler rapidement l'espacement sans écrire de CSS personnalisé.</p>
+            </div>
+        </div>
+    </div>
+
+
+        <!-- SLIDE 12: FOOTER -->
         <div class="slide">
             <h2>Le Footer</h2>
             <p>Un composant simple pour le bas de page.</p>
@@ -486,7 +532,7 @@
             </div>
         </div>
 
-        <!-- SLIDE 11: RÉCAPITULATIF -->
+        <!-- SLIDE 13: RÉCAPITULATIF -->
         <div class="slide">
             <h2>Récapitulatif des Classes Clés</h2>
             <table>
@@ -522,7 +568,7 @@
             </table>
         </div>
 
-        <!-- SLIDE 12: CONCLUSION -->
+        <!-- SLIDE 14: CONCLUSION -->
         <div class="slide">
             <div style="text-align: center;">
                 <h1 style="color: var(--primary);">Merci !</h1>
@@ -537,7 +583,7 @@
             </div>
         </div>
 
-        <!-- SLIDE 13: SOURCES -->
+        <!-- SLIDE 15: SOURCES -->
         <div class="slide">
             <h2>Sources & Ressources</h2>
             <table>
@@ -567,7 +613,7 @@
         </div>
 
         <!-- NAVIGATION CONTROLS -->
-        <div class="slide-number">Slide <span id="current-slide">1</span> / 13</div>
+        <div class="slide-number">Slide <span id="current-slide">1</span> / 15</div>
         <div class="controls">
             <button class="btn-nav" onclick="changeSlide(-1)">&#8592;</button>
             <button class="btn-nav" onclick="changeSlide(1)">&#8594;</button>
