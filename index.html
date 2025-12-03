@@ -8,53 +8,47 @@
 </head>
 
 <body class="has-background-black-ter">
-<nav class="navbar has-background-black-bis is-flex is-flex-direction-column is-align-items-center p-4">
-
+<nav class="has-background-black-bis is-flex is-flex-direction-column is-align-items-center p-4">
+    
     <!-- Logo -->
-    <div class="navbar-brand is-flex is-justify-content-center">
+    <div class="is-flex is-justify-content-center">
         <figure class="image is-256x256">
             <img src="WhatsApp_Image_2025-11-29_at_05.33.40-removebg-preview.png" alt="">
         </figure>
     </div>
 
-    <!-- Menu -->
-    <div class="navbar-menu is-flex is-justify-content-center mt-4">
-        <div class="navbar-start is-flex is-justify-content-center" style="gap: 2rem;">
-
-            <a class="navbar-item"
-               style="color:#044221; border:none; outline:none; background:transparent; font-weight:bold;"
-               onmouseover="this.style.color='white'; this.style.background='transparent';"
-               onmouseout="this.style.color='#00ff76'; this.style.background='transparent';">
-                Home
-            </a>
-
-            <a class="navbar-item"
-               style="color:#043f20; border:none; outline:none; background:transparent;font-weight:bold;"
-               onmouseover="this.style.color='white'; this.style.background='transparent';"
-               onmouseout="this.style.color='#00ff76'; this.style.background='transparent';">
-                Véhicules
-            </a>
-
-            <a class="navbar-item"
-               style="color:#044221; border:none; outline:none; background:transparent;font-weight:bold;"
-               onmouseover="this.style.color='white'; this.style.background='transparent';"
-               onmouseout="this.style.color='#00ff76'; this.style.background='transparent';">
-                Conditions
-            </a>
-
-            <a class="navbar-item"
-               style="color:#044b25; border:none; outline:none; background:transparent;font-weight:bold;"
-               onmouseover="this.style.color='white'; this.style.background='transparent';"
-               onmouseout="this.style.color='#00ff76'; this.style.background='transparent';">
-                Contact
-            </a>
-
-        </div>
+    <!-- Menu simple -->
+    <div class="is-flex is-justify-content-center mt-4" style="gap: 2rem;">
+        <a class="has-text-weight-bold is-size-5"
+           style="color: #00ff76 !important;"
+           onmouseover="this.style.setProperty('color', 'white', 'important')" 
+           onmouseout="this.style.setProperty('color', '#00ff76', 'important')">
+            Home
+        </a>
+        
+        <a class="has-text-weight-bold is-size-5"
+           style="color: #00ff76 !important;"
+           onmouseover="this.style.setProperty('color', 'white', 'important')" 
+           onmouseout="this.style.setProperty('color', '#00ff76', 'important')">
+            Véhicules
+        </a>
+        
+        <a class="has-text-weight-bold is-size-5"
+           style="color: #00ff76 !important;"
+           onmouseover="this.style.setProperty('color', 'white', 'important')" 
+           onmouseout="this.style.setProperty('color', '#00ff76', 'important')">
+            Conditions
+        </a>
+        
+        <a class="has-text-weight-bold is-size-5"
+           style="color: #00ff76 !important;"
+           onmouseover="this.style.setProperty('color', 'white', 'important')" 
+           onmouseout="this.style.setProperty('color', '#00ff76', 'important')">
+            Contact
+        </a>
     </div>
 
 </nav>
-
-
 
 
 <section class="section-map has-background-black-ter">
@@ -84,7 +78,7 @@
 
             <!-- Formulaire medium -->
             <div class="column is-6">
-                <div class="contact-box" style="border: 2px solid #15854b; padding: 2rem;">
+                <div class="contact-box" style="border: 2px solid #074625; padding: 2rem;">
                     
                     <!-- Titre -->
                     <h2 class="title is-4 has-text-white  underline-custom">
@@ -103,39 +97,39 @@
                     <form>
                         <!-- Nom -->
                         <div class="field">
-                            <label class="label has-text-white">Nom <span style="color:red;">*</span></label>
+                            <label class="label has-text-grey-dark">Nom <span style="color:red;">*</span></label>
                             <div class="control">
-                                <input class="input" type="text" style="border: 2px solid #043f1f;" required>
+                                <input class="input" type="text" style="border: 3px solid #f9fcfa;" required>
                             </div>
                         </div>
 
                         <!-- E-mail -->
                         <div class="field">
-                            <label class="label has-text-white">E-mail <span style="color:red;">*</span></label>
+                            <label class="label has-text-grey-dark">E-mail <span style="color:red;">*</span></label>
                             <div class="control">
-                                <input class="input" type="email" style="border: 2px solid #07582d;" required>
+                                <input class="input" type="email" style="border: 3px solid #f3f7f5;" required>
                             </div>
                         </div>
 
                         <!-- Téléphone -->
                         <div class="field">
-                            <label class="label has-text-white">Numéro de téléphone <span style="color:red;">*</span></label>
+                            <label class="label has-text-grey-dark">Numéro de téléphone <span style="color:red;">*</span></label>
                             <div class="control">
-                                <input class="input" type="tel" style="border: 2px solid #03381c;" required>
+                                <input class="input" type="tel" style="border: 3px solid #f6fcf9;" required>
                             </div>
                         </div>
 
                         <!-- Message -->
                         <div class="field">
-                            <label class="label has-text-white">Message <span style="color:red;">*</span></label>
+                            <label class="label has-text-grey-dark">Message <span style="color:red;">*</span></label>
                             <div class="control">
-                                <textarea class="textarea" style="border: 2px solid #02361b;" required></textarea>
+                                <textarea class="textarea" style="border: 3px solid #e9eeeb;" required></textarea>
                             </div>
                         </div>
 
                         <!-- Bouton petit et blanc -->
-                        <button class="button is-small " 
-                                style="border: 2px solid #033018; background: white; color: black;">
+                        <button class="button is-128x128 " 
+                                style=" background: white; color: black;">
                             Envoyer
                         </button>
                     </form>
@@ -213,7 +207,7 @@
                     LOCATION DE VOITURE DE SPORT
                 </h2>
                 <p class="has-text-white is-size-5 mb-6">
-                    Prenez contact par mail à <strong class="has-text-success">info@magintec.com</strong> ou via le formulaire de notre site
+                    Prenez contact par mail à <strong class="has-text-primary">info@magintec.com</strong> ou via le formulaire de notre site
                 </p>
                 <button class="button is-success is-medium has-text-weight-bold px-6 py-3">
                     JE RÉSERVE MA VOITURE
