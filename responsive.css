@@ -1,0 +1,105 @@
+.my-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0;
+  position: sticky;
+  z-index: 1;
+}
+
+.container-nav-link {
+  display: flex;
+  justify-content: center;
+}
+
+.btn-burger {
+  display: none;
+  border: 1px solid #00ff76;
+  border-radius: 8px;
+  padding: 10px;
+  color: #00ff76;
+  font-size: 30px;
+}
+
+.collapse-nav {
+  height: 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  padding-right: 15px;
+  background-color: rgb(19, 22, 26);
+  top: 94px;
+  position: sticky;
+  z-index: 1;
+}
+
+.collapse-nav-link {
+  color: #00ff76;
+  font-weight: bold;
+}
+
+.footer-container {
+  height: 400px;
+  background-image: url("voiture2.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.btn-reserve-voiture {
+  background-color: #00ff76;
+}
+
+/* Responsive */
+@media all and (max-width: 700px) {
+  .container-logo {
+    width: 200px;
+  }
+
+  .my-nav {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .container-nav-link {
+    display: none;
+  }
+
+  .btn-burger {
+    display: block;
+  }
+}
+
+@media all and (max-width: 482px) {
+  .footer-container {
+    height: 500px;
+  }
+}
+
+@media all and (max-width: 349px) {
+  .container-logo {
+    margin: auto;
+  }
+
+  .my-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .collapse-nav {
+    align-items: flex-start;
+    padding-right: unset;
+    padding-left: 15px;
+    top: 172px;
+  }
+}
+
+@media all and (max-width: 360px) {
+  .btn-reserve-voiture {
+    width: 280px;
+  }
+}
+
+
